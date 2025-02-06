@@ -126,4 +126,10 @@ public class OrderProcessingService : Nop.Services.Orders.OrderProcessingService
             taxSettings)
     {
     }
+
+    public override Task<bool> IsPaymentWorkflowRequiredAsync(IList<ShoppingCartItem> cart, bool? useRewardPoints = null)
+    {
+        //TODO: Check if company/division is retail (i.e. credit card) or invoiced (per order/month)
+        return Task.FromResult(false);
+    }
 }

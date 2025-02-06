@@ -1,0 +1,23 @@
+﻿@model StoreDropdownModel
+@inject CatalogSettings catalogSettings
+@inject Nop.Services.Security.IPermissionService permissionService
+
+@{
+    var store = await storeContext.GetCurrentStoreAsync();
+    var canAccessAllStores = await permissionService.AuthorizeAsync(GsgPermissionProvider.AccessAllStores);
+    var isDefaultStore = await genericAttributeService.GetAttributeAsync<bool>(store, "IsDefault");
+
+    await baseAdminModelFactory.PrepareStoresAsync(Model.AvailableStores);
+
+    Model.StoreId = canAccessAllStores && isDefaultStore ? 0 : (await storeContext.GetCurrentStoreAsync()).Id;
+    Model.HideStoresList = catalogSettings.IgnoreStoreLimitations || Model.AvailableStores.SelectionIsNotPossible();
+}
+
+<div class="form-group row" @(Model.HideStoresList ? Html.Raw("style=\"display:none\"") : null)>
+    <div class="col-md-4">
+        <nop-label asp-for="StoreId" />
+    </div>
+    <div class="col-md-8">
+        <nop-select asp-for="StoreId" asp-items="Model.AvailableStores" />
+    </div>
+</div>

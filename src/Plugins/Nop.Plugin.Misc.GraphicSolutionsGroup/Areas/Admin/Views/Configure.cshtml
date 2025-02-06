@@ -1,0 +1,86 @@
+﻿@model ConfigurationModel
+
+@{
+    Layout = "_ConfigurePlugin";
+    NopHtml.SetActiveMenuItemSystemName("Gsg");
+}
+
+
+<p>There currently are no configuration options.</p>
+<p>  Once there are, they will go here.</p>
+
+@* @{
+    const string hideInfoBlockAttributeName = "GsgConfigure.HideInfoBlock";
+    var customer = await workContext.GetCurrentCustomerAsync();
+    var hideInfoBlock = await genericAttributeService.GetAttributeAsync<bool>(customer, hideInfoBlockAttributeName);
+}
+
+<div asp-validation-summary="All"></div>
+
+<form asp-controller="Store" asp-action="Import" method="post">
+    <div class="content-header clearfix">
+        <h1 class="float-left">
+            Import store from GSG
+            <small>
+                <i class="fas fa-arrow-circle-left"></i>
+                <a asp-controller="Admin" asp-action="Index">Back to dashboard</a>
+            </small>
+        </h1>
+        <div class="float-right">
+            <button type="submit" name="save" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                @T("Admin.Common.Save")
+            </button>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-12 clearfix">
+                        <div class="float-left">
+                            @await Component.InvokeAsync(typeof(SettingModeViewComponent), new { modeName = "store-advanced-mode" })
+                        </div>
+                    </div>
+                </div>
+
+                <nop-cards id="configure-cards">
+                    <nop-card asp-name="configure-info" asp-icon="fas fa-info" asp-title="Info" asp-hide-block-attribute-name="@hideInfoBlockAttributeName" asp-hide="@hideInfoBlock">
+                        <div class="card-body">
+                            <div id="configure-area">
+                                <div class="form-group row">
+                                    <div class="col-md-3">
+                                        <nop-label asp-for="CompanyId" />
+                                    </div>
+                                    <div class="col-md-9">
+                                        <nop-editor asp-for="CompanyId" />
+                                        <span asp-validation-for="CompanyId"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-3">
+                                        <nop-label asp-for="Url" />
+                                    </div>
+                                    <div class="col-md-9">
+                                        <nop-editor asp-for="Url" />
+                                        <span asp-validation-for="Url"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-3">
+                                        <nop-label asp-for="Hosts" />
+                                    </div>
+                                    <div class="col-md-9">
+                                        <nop-editor asp-for="Hosts" />
+                                        <span asp-validation-for="Hosts"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nop-card>
+                </nop-cards>
+            </div>
+        </div>
+    </section>
+</form>
+ *@

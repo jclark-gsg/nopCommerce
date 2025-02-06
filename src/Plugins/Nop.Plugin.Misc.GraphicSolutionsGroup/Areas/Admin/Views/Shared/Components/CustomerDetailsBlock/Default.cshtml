@@ -1,0 +1,21 @@
+﻿@model CustomerDetailsBlockModel
+
+@{
+    const string hideStoreMappingBlockAttributeName = "CustomerPage.HideStoreMapping";
+    var customer = await workContext.GetCurrentCustomerAsync();
+    var hideStoreMappingBlock = await genericAttributeService.GetAttributeAsync<bool>(customer, hideStoreMappingBlockAttributeName, defaultValue: true);
+}
+
+<nop-card asp-name="customer-store-name" asp-icon="fas fa-info" asp-title="Store mapping" asp-hide-block-attribute-name="@hideStoreMappingBlockAttributeName" asp-hide="@hideStoreMappingBlock" asp-advanced="false">
+    <div class="card-body">
+        <div class="form-group row">
+            <div class="col-md-3">
+                <nop-label asp-for="Customer.RegisteredInStore" />
+            </div>
+            <div class="col-md-9">
+                <nop-select asp-for="RegisteredInStoreId" asp-items="Model.AvailableStores" />
+                <span asp-validation-for="RegisteredInStoreId"></span>
+            </div>
+        </div>
+    </div>
+</nop-card>

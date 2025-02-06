@@ -1,0 +1,13 @@
+﻿{
+  "Group": "Misc",
+  "FriendlyName": "Gsg",
+  "SystemName": "Misc.Gsg",
+  "Version": "1.0.0",
+  "SupportedVersions": [
+    "4.70"
+  ],
+  "Author": "Jason Clark",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Misc.GraphicSolutionsGroup.dll",
+  "Description": ""
+}

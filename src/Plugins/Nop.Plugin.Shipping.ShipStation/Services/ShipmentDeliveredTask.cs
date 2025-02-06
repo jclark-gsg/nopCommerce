@@ -25,9 +25,10 @@ public class ShipmentDeliveredTask : IScheduleTask
     /// Execute task
     /// </summary>
     /// <returns>A task that represents the asynchronous operation</returns>
-    public async Task ExecuteAsync()
+    public Task ExecuteAsync()
     {
-        await _logger.InformationAsync("DeliveredOrderTask.ExecuteAsync has been called");
+        //await _logger.InformationAsync("DeliveredOrderTask.ExecuteAsync has been called");
+        return Task.CompletedTask;
     }
 
     #endregion

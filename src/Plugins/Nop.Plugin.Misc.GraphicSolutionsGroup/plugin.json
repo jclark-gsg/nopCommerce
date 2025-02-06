@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Misc",
+  "FriendlyName": "Graphic Solutions Group",
+  "SystemName": "Misc.GraphicSolutionsGroup",
+  "Version": "4.90.01",
+  "SupportedVersions": [ "4.90" ],
+  "Author": "Jason Clark",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Misc.GraphicSolutionsGroup.dll",
+  "Description": "Adds functionality specific to Graphic Solutions Group"
+}
